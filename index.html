@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="heading">Bookshelf App</h1>
+    <div class="container">
+      <form action="" class="form-container">
+        <div class="form-input-container">
+          <label for="book-title" class="form-label">Judul</label>
+          <input
+            type="text"
+            id="book-title"
+            name="book-title"
+            class="form-input"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label for="book-author" class="form-label">Penulis</label>
+          <input
+            type="text"
+            id="book-author"
+            name="book-author"
+            class="form-input"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label for="book-year" class="form-label">Tahun</label>
+          <input
+            type="number"
+            id="book-year"
+            name="book-year"
+            class="form-input"
+            required
+          />
+        </div>
+        <div class="form-input-container">
+          <label for="book-completion" class="form-label">Selesai Dibaca</label>
+          <input
+            type="checkbox"
+            id="book-completion"
+            name="book-completion"
+            class="form-checklist"
+          />
+        </div>
+        <input class="form-submit" type="submit" />
+      </form>
+
+      <div class="list-container">
+        <div class="finished-list-container">
+          <h2 class="list-title">Finished</h2>
+          <!-- <div class="single-book">
+            <h3 class="single-book-title">Harry Potter</h3>
+            <p class="single-book-author">J.K. Rowling</p>
+            <p class="single-book-year">2000</p>
+            <button class="single-book-move-btn">move</button>
+            <button class="single-book-del-btn">delete</button>
+          </div> -->
+        </div>
+        <div class="unfinished-list-container">
+          <h2 class="list-title">Unfinished</h2>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
