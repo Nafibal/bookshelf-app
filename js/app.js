@@ -17,26 +17,22 @@ form.addEventListener("submit", (e) => {
   //   console.log(bookAuthorInput.value);
   //   console.log(bookYearInput.value);
   //   console.log(bookCompletionInput.checked);
+  addBook(bookTitleInput, bookAuthorInput, bookYearInput, bookCompletionInput);
+});
 
-  if (bookCompletionInput.checked) {
+function addBook(title, author, year, completion) {
+  if (completion.checked) {
     finishedBookContainer.appendChild(
-      createBook(
-        bookTitleInput,
-        bookAuthorInput,
-        bookYearInput,
-        bookCompletionInput
-      )
+      createBook(title, author, year, completion)
     );
   } else {
     unfinishedBookContainer.appendChild(
-      createBook(bookTitleInput, bookAuthorInput, bookYearInput)
+      createBook(title, author, year, completion)
     );
   }
-});
+}
 
 function createBook(title, author, year, completion) {
-  console.log(bookTitleInput.value);
-
   const book = document.createElement("div");
   book.classList.add("single-book");
 
@@ -55,24 +51,36 @@ function createBook(title, author, year, completion) {
   const moveBtn = document.createElement("button");
   moveBtn.classList.add("single-book-move-btn");
   moveBtn.innerText = "move";
-  
+
   const delBtn = document.createElement("button");
   delBtn.classList.add("single-book-del-btn");
   delBtn.innerText = "delete";
-  
+
   book.appendChild(bookTitle);
   book.appendChild(bookAuthor);
   book.appendChild(bookYear);
   book.appendChild(moveBtn);
   book.appendChild(delBtn);
-  
-  moveBtn.addEventListener("click", moveBook(bookCompletionInput.checked, book));
-  delBtn.addEventListener("click", deleteBook());
 
-  console.log(book);
+  moveBtn.addEventListener("click", (e) => {
+    moveBook(e.target.parentElement, book);
+  });
+  delBtn.addEventListener("click", (e) => {
+    deleteBook(e.target.parentElement);
+  });
+
   return book;
 }
 
-moveBook(completion, book) {
-    
+function moveBook(parent, book) {
+  if (parent.parentElement.classList.contains("finished-list-container")) {
+    parent.remove();
+    unfinishedBookContainer.appendChild(book);
+  } else {
+    parent.remove();
+    finishedBookContainer.appendChild(book);
+  }
+}
+function deleteBook(parent) {
+  parent.remove();
 }
