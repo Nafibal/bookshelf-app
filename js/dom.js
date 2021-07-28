@@ -32,10 +32,12 @@ function createBook(title, author, year, id) {
 
   const moveBtn = document.createElement("button");
   moveBtn.classList.add("single-book-move-btn");
+  moveBtn.classList.add("btn");
   moveBtn.innerText = "move";
 
   const delBtn = document.createElement("button");
   delBtn.classList.add("single-book-del-btn");
+  delBtn.classList.add("btn");
   delBtn.innerText = "delete";
 
   book.appendChild(bookTitle);
